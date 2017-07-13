@@ -8,4 +8,5 @@ import (
 type myType int
 
 func main() {
+	fmt.Println(myType(32) < 53)
 }
