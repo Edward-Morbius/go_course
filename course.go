@@ -2,11 +2,16 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
+	//Capacity of channel is two: ch := make(chan int, 2)
+	ch := make(chan int)
 	go func() {
-		fmt.Println("~~~")
+		x := <- ch
+		fmt.Println("~~~", x)
 	}()
-	//No output!
+	ch <- 100
+	time.Sleep(time.Second)
 }
