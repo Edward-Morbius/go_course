@@ -6,7 +6,8 @@ import (
 
 
 func main() {
-	s := "Hello"
+	s := "H⇝ello"
 	fmt.Println(s)
 	fmt.Printf("%c\n", s[1])
+	fmt.Println(len(s))
 }
