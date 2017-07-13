@@ -24,6 +24,9 @@ func (c car) stop() {
 func do(v vehicle) {
 }
 
+//Does not wirk with nil
+type something struct{}
+
 func main() {
 	var c car
 
