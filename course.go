@@ -4,6 +4,10 @@ import (
 	"fmt"
 )
 
+func print(x interface{}) {
+}
+
+
 //Interface definition.
 type vehicle interface {
 	//Only methods!
@@ -33,4 +37,9 @@ func main() {
 
 	fmt.Println(c)
 	do(c)
+
+	//Multitype, variadic functions
+	print(1)
+	print(1.1111)
+	print("Hello")
 }
