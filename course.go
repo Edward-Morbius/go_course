@@ -4,18 +4,16 @@ import (
 	"fmt"
 )
 
+func fn(slice []byte) [4]byte {
+	var arr [4]byte
+	copy(arr[:], slice)
+	return arr
+}
+
 func main() {
-	x := []byte{1, 23}
-	y := []byte{1, 23}
-	h := make(map[string]int)
-	/*
-		h[x]++
-
-		# github.com/Edward-Morbius/go_course
-		./course.go:11: cannot use x (type []byte) as type string in map index
-
-	*/
-
-	h[string(y)]++
+	x := []byte{1, 23, 7, 42}
+	h := make(map[[4]byte]int)
+	y := fn(x)
+	h[y] = 111
 	fmt.Println(h)
 }
