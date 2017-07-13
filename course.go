@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func goRoutine(ch chan int, done chan struct{}) {
+func goRoutine(ch <-chan int, done chan struct{}) {
 	defer close(done)
 	for x := range ch {
 		fmt.Println("⇝⇝⇝", x)
