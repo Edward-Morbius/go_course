@@ -11,12 +11,11 @@ func main() {
 	ch := make(chan int)
 	fmt.Println(n)
 	for i := 0; i < 10; i++ {
-		i := i
-		go func() {
+		go func(i int) {
 			for x := range ch {
 				fmt.Println(i, x)
 			}
-		}()
+		}(i)
 	}
 	for j := 0; j < 10; j++ {
 		ch <- j
