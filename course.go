@@ -6,6 +6,7 @@ import (
 
 //Interface definition.
 type vehicle interface {
+	//Only methods!
 	start()
 	stop()
 }
