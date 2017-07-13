@@ -13,10 +13,12 @@ type myType2 myType
 type Never struct{}
 
 //Remember that mt is BY VALUE!
+//    ↓↓↓↓↓↓↓↓↓↓ Receiver
 func (mt myType) print() {
 	fmt.Println(mt)
 }
 
+//    ↓↓↓↓↓↓↓↓↓↓↓ Pointer receiver.
 func (mt *myType) modify() {
 	*mt = 42
 }
