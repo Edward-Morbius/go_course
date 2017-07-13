@@ -4,17 +4,8 @@ import (
 	"fmt"
 )
 
-func fn(slice []byte) [4]byte {
-	var arr [4]byte
-	//Works even if slice has different size.
-	copy(arr[:], slice)
-	return arr
-}
+//myType is based on int
+type myType int
 
 func main() {
-	x := []byte{1, 23, 7, 42}
-	h := make(map[[4]byte]int)
-	y := fn(x)
-	h[y] = 111
-	fmt.Println(h)
 }
