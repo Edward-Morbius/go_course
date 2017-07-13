@@ -20,7 +20,9 @@ func (mt myType) print() {
 
 //    ↓↓↓↓↓↓↓↓↓↓↓ Pointer receiver.
 func (mt *myType) modify() {
-	*mt = 42
+	if mt != nil {
+		*mt = 42
+	}
 }
 
 func main() {
@@ -30,4 +32,9 @@ func main() {
 	x.print()
 	x.modify()
 	x.print()
+	var y *myType
+	//This works!
+	y.modify()
+	//This fails!
+	y.print()
 }
