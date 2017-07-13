@@ -6,6 +6,7 @@ import (
 
 func fn(slice []byte) [4]byte {
 	var arr [4]byte
+	//Works even if slice has different size.
 	copy(arr[:], slice)
 	return arr
 }
