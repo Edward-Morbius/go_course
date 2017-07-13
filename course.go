@@ -16,6 +16,7 @@ func (b base) print() {
 
 //Overload for derived type
 func (s sub) print() {
+	s.base.print()
 	fmt.Println("sub", s)
 }
 
