@@ -13,6 +13,7 @@ func main() {
 	for i, c := range s {
 		fmt.Printf("%2d: '%c'\n", i, c)
 	}
+	//Runes are used for UCS code points.
 	rs := []rune(s)
 	fmt.Printf("%q\n", rs)
 }
