@@ -13,4 +13,6 @@ func main() {
 	for i, c := range s {
 		fmt.Printf("%2d: '%c'\n", i, c)
 	}
+	rs := []rune(s)
+	fmt.Printf("%q\n", rs)
 }
