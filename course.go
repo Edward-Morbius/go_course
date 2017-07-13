@@ -5,6 +5,8 @@ import (
 )
 
 func print(x interface{}) {
+	y := x.(int)
+	fmt.Println(y)
 }
 
 
