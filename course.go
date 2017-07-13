@@ -2,24 +2,23 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 )
 
-func goRoutine(ch <-chan int, done chan struct{}) {
-	defer close(done)
-	for x := range ch {
-		fmt.Println("⇝⇝⇝", x)
-	}
-	fmt.Println("⇜⇜⇜")
-}
 
 func main() {
-	//Capacity of channel is two: ch := make(chan int, 2)
+	n := runtime.NumCPU()
 	ch := make(chan int)
-	done := make(chan struct{})
-	go goRoutine(ch, done)
-	ch <- 100
-	ch <- 101
-	ch <- 102
-	close(ch)
-	<-done
+	fmt.Println(n)
+	for i := 0; i < 10; i++ {
+		i := i
+		go func() {
+			for x := range ch {
+				fmt.Println(i, x)
+			}
+		}()
+	}
+	for j := 0; j < 10; j++ {
+		ch <- j
+	}
 }
