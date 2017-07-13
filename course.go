@@ -5,10 +5,17 @@ import (
 )
 
 func print(x interface{}) {
-	y := x.(int)
-	fmt.Println(y)
+	switch t := x.(type) {
+	case int:
+		fmt.Println("int", x)
+	case float32:
+		fmt.Println("int", x)
+	case string:
+		fmt.Println("string", x)
+	default:
+		fmt.Printf("unknown type `%s`: '%s'\n", t, x)
+	}
 }
-
 
 //Interface definition.
 type vehicle interface {
