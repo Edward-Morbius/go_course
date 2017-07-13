@@ -20,18 +20,11 @@ func (s sub) print() {
 	fmt.Println("sub", s)
 }
 
-/*
- Only available for methods, no polymorphism for functions.
-
- This is an error:
-*/
-// func fun(x int) {
-// 	fmt.Println("fun, int")
-// }
-
-// func fun(float32 f) {
-// 	fmt.Println("fun, float")
-// }
+//Interface definition.
+type vehicle interface {
+	start()
+	stop()
+}
 
 func main() {
 	var b base = 9
