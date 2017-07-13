@@ -2,27 +2,25 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"os"
 )
 
-type counter struct {
-	io.Reader
-	n int
+type nType complex128
+
+func (n nType) foo() int {
+	return 11
 }
 
-func (c *counter) Read(b []byte) (int, error) {
-	n, err := c.Reader.Read(b)
-	c.n += n
-	//Read reads n bytes into b and return the number of read bytes, therefore n not c.n.
-	return n, err
+func (n nType) bar() int {
+	return 22
+}
+
+func (n nType) snafu() int {
+	return 33
 }
 
 func main() {
-	inp := &counter{Reader: os.Stdin, n: 0}
-	var inp2 *counter = &counter{Reader: os.Stdin}
-	fmt.Println("␌")
-	io.Copy(os.Stdout, inp)
-	fmt.Println("␄", inp.n)
-	fmt.Println(inp2)
+	var fn func(nType) int
+	fn = nType.snafu
+	var y nType
+	fmt.Println(fn(y))
 }
