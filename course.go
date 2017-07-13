@@ -4,31 +4,29 @@ import (
 	"fmt"
 )
 
-type base int
-
-type sub struct {
-	base
-}
-
-func (b base) print() {
-	fmt.Println("base", b)
-}
-
-//Overload for derived type
-func (s sub) print() {
-	s.base.print()
-	fmt.Println("sub", s)
-}
-
 //Interface definition.
 type vehicle interface {
 	start()
 	stop()
 }
 
+type car int
+
+func (c car) start() {
+}
+
+func (c car) stop() {
+}
+
+//Now magically car implements the interface of vehicle as it has all
+//the functions...
+
+func do(v vehicle) {
+}
+
 func main() {
-	var b base = 9
-	b.print()
-	var s sub
-	s.print()
+	var c car
+
+	fmt.Println(c)
+	do(c)
 }
