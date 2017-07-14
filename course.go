@@ -5,11 +5,11 @@ import (
 )
 
 func halfAnswer() int {
-	return 20
+	return 21
 }
 
 func answer() int {
-	return halfAnswer() + halfAnswer() + halfAnswer()
+	return halfAnswer() + halfAnswer()
 }
 
 func whichAnser(half bool) int {
