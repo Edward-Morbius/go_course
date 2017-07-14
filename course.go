@@ -2,25 +2,23 @@ package main
 
 import (
 	"fmt"
-	"sync"
 )
 
-func main() {
-	var problem int
-	var mu sync.Mutex
-	var wg sync.WaitGroup
+func halfAnswer() int {
+	return 20
+}
 
-	for i := 0; i < 5; i++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			for j := 0; j < 10000; j++ {
-				mu.Lock()
-				problem++
-				mu.Unlock()
-			}
-		}()
+func answer() int {
+	return halfAnswer() + halfAnswer() + halfAnswer()
+}
+
+func whichAnser(half bool) int {
+	if half {
+		return halfAnswer()
 	}
-	wg.Wait()
-	fmt.Println(problem)
+	return answer()
+}
+
+func main() {
+	fmt.Printf("Answer: %d\n", answer())
 }
