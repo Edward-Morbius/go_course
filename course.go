@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"strings"
 )
 
 func repeat1(s string, n int) string {
@@ -19,6 +20,11 @@ func repeat2(s string, n int) string {
 		buf.WriteString(s)
 	}
 	return buf.String()
+}
+
+
+func repeat3(s string, n int) string {
+	return strings.Repeat(s, n)
 }
 
 func main() {
