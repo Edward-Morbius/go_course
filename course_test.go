@@ -2,17 +2,8 @@ package main
 
 import "testing"
 
-
-func TestAnswer(t *testing.T) {
-	a := answer()
-	if a != 42 {
-		t.Errorf("answer %d != 42", a)
-	}
-}
-
-func TestHalfAnswer(t *testing.T) {
-	a := halfAnswer()
-	if a != 21 {
-		t.Errorf("halfAnswer %d != 21", a)
+func BenchmarkSlowRepeat(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_ = slowRepeat("Hello, World\n", 1000)
 	}
 }

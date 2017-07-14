@@ -4,21 +4,15 @@ import (
 	"fmt"
 )
 
-func halfAnswer() int {
-	return 21
-}
-
-func answer() int {
-	return halfAnswer() + halfAnswer()
-}
-
-func whichAnser(half bool) int {
-	if half {
-		return halfAnswer()
+func slowRepeat(s string, n int) string {
+	var x string
+	for i := 0; i < n; i++ {
+		x += s
 	}
-	return answer()
+	return x
 }
 
 func main() {
-	fmt.Printf("Answer: %d\n", answer())
+	s := slowRepeat("Hello, World!\n", 10)
+	fmt.Println(s)
 }
