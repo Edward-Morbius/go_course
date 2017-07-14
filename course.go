@@ -1,33 +1,60 @@
 package main
 
 import (
-	"bytes"
+	"flag"
 	"fmt"
-	"strings"
+	"log"
+	"os"
+	"runtime/pprof"
 )
 
-func repeat1(s string, n int) string {
-	var x string
-	for i := 0; i < n; i++ {
-		x += s
-	}
-	return x
+type node struct {
+	next *node
+	v    int
 }
 
-func repeat2(s string, n int) string {
-	var buf bytes.Buffer
-	for i := 0; i < n; i++ {
-		buf.WriteString(s)
+func create(n int) *node {
+
+	if n < 1 {
+		return nil
 	}
-	return buf.String()
+
+	head := &node{v: 0}
+
+	current := head
+
+	for i := 1; i < n; i++ {
+		n := &node{v: i}
+		current.next = n
+		current = n
+	}
+
+	return head
 }
 
-
-func repeat3(s string, n int) string {
-	return strings.Repeat(s, n)
+func (n *node) len() int {
+	var l int
+	for ; n != nil; n, l = n.next, l+1 {
+	}
+	return l
 }
 
 func main() {
-	s := repeat1("Hello, World!\n", 10)
-	fmt.Println(s)
+
+	n := flag.Int("n", 1e6, "number of nodes in list")
+	c := flag.String("c", "", "write cpu profile to file")
+
+	flag.Parse()
+
+	if *c != "" {
+		f, err := os.Create(*c)
+		if err != nil {
+			log.Fatal(err)
+		}
+		pprof.StartCPUProfile(f)
+		defer pprof.StopCPUProfile()
+	}
+
+	list := create(*n)
+	fmt.Printf("%d\n", list.len())
 }
